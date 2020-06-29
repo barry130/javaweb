@@ -37,7 +37,7 @@ public class BaseDao {
     }
 
     public static boolean login(String name, String pass) {
-        String sql = "select 1 from user where username='" + name + "' and password='" + pass + "' LIMIT 1";
+        String sql = "select username,password from user where username='" + name + "' and password='" + pass + "' LIMIT 1";
 
         System.err.println(sql);
         boolean result = executeQuery(sql);
@@ -60,7 +60,7 @@ public class BaseDao {
     }
 
     public static boolean register(String name, String pass) {
-        String sql = "select 1 from user where username='" + name + "'";
+        String sql = "select username from user where username='" + name + "'";
         if (executeQuery(sql)) {
             System.err.println("用户名已经存在,name=" + name);
             return false;
@@ -72,6 +72,19 @@ public class BaseDao {
             System.err.println("注册成功,username=" + name + ",password=" + pass);
         } else {
             System.err.println("注册失败,username=" + name + ",password=" + pass);
+        }
+        return result;
+    }
+
+    public static boolean insert(String name,String time,String num,String content)
+    {
+        String sql="insert into daka(username,dakatime,num,remark) VALUE('" + name + "','" + time + "','" + num + "','" + content + "')";
+        System.err.println(sql);
+        boolean result = executeUpdate(sql);
+        if (result) {
+            System.err.println("打卡成功");
+        } else {
+            System.err.println("打卡失败");
         }
         return result;
     }

@@ -20,7 +20,7 @@
     if (BaseDao.login(username, password)) {
         out.println("登陆成功！");
         session.setAttribute("name", username);
-        out.println("<a href='../index.jsp'>返回首页</a>");
+        out.println("<a href='/html/daka.html'>前往打卡</a>");
     } else {
         out.println("用户名或密码错误，登陆失败！");
         out.println("<a href='/html/login.html'>重新登陆</a>");
