@@ -21,9 +21,12 @@
         out.println("登陆成功！");
         session.setAttribute("name", username);
         out.println("<a href='/html/daka.html'>前往打卡</a>");
+        out.println("<a href='../index.jsp'>返回首页</a>");
     } else {
-        out.println("用户名或密码错误，登陆失败！");
-        out.println("<a href='/html/login.html'>重新登陆</a>");
+        out.println("用户名或密码错误，登陆失败，请重新登录！</br>");
+        out.println("正在跳转至登录页");
+        response.setHeader("Refresh","2;URL=/html/login.html");
+       // out.println("<a href='/html/login.html'>重新登陆</a>");
     }
 %>
 </body>

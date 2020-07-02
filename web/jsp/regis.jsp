@@ -17,11 +17,15 @@
     String pass1 = request.getParameter("password1");
     String pass2 = request.getParameter("password2");
     if (pass1.equals(pass2) && BaseDao.register(name, pass1)) {
-        out.println("注册成功！");
-        out.println("<a href='/html/login.html'>请登录</a>");
+        out.println("注册成功！</br>");
+        out.println("正在跳转至登录页");
+        response.setHeader("Refresh","2;URL=/html/login.html");
+    //    out.println("<a href='/html/login.html'>请登录</a>");
     } else {
-        out.println("注册失败!");
-        out.println("<a href='/html/regis.html'>重新注册</a>");
+        out.println("注册失败,请重新注册！</br>");
+        out.println("正在跳转至注册页");
+        response.setHeader("Refresh","2;URL=/html/regis.html");
+     //   out.println("<a href='/html/regis.html'>重新注册</a>");
     }
 %>
 
