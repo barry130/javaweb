@@ -27,10 +27,12 @@
 <div style="text-align: center;">
 <table border="2" style="margin: auto">
     <tr>
-        <td width="100" s="title">序号</td>
+        <td width="50" s="title">序号</td>
         <td width="100" name="title">用户名</td>
         <td width="200" time="title">打卡时间</td>
-        <td width="900" content="title">打卡备注详情</td>
+        <td width="100" studytime="title">每日学习时间(小时)</td>
+        <td width="400" content="title">每日学习内容</td>
+        <td width="400" remark="title">备注</td>
     </tr>
 
 <%
@@ -47,9 +49,11 @@
         while (rs.next()) {
             rowCount++;%>
     <tr>
-        <td width="100"  ><% out.print(rowCount);%></td>
+        <td width="100" ><% out.print(rowCount);%></td>
         <td width="100" ><%=rs.getString("username") %></td>
         <td width="100" ><%=rs.getString("dakatime") %></td>
+        <td width="100" ><%=rs.getString("studytime") %></td>
+        <td width="100" ><%=rs.getString("studycontent") %></td>
         <td width="100" ><%=rs.getString("remark") %></td>
     </tr>
     <%

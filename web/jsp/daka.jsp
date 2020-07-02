@@ -17,7 +17,9 @@
 <div>
     当前登录用户<%=session.getAttribute("name")%>;
 <%
+    String studytime = request.getParameter("studytime");
     String content = request.getParameter("content");
+    String remark = request.getParameter("remark");
     String username =(String)session.getAttribute("name");
     SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
     SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
@@ -29,15 +31,15 @@
             response.setHeader("Refresh","2;URL=../index.jsp");}
          else {
             int num = 1;
-            if (BaseDao.insert(username, df.format(new Date()), num, content)) {
+            if (BaseDao.insert(username, df.format(new Date()),studytime,content, num, remark)) {
                 out.println("打卡成功！</br>");
                 out.println("正在跳转至首页");
                 response.setHeader("Refresh","2;URL=../index.jsp");
               //  out.println("<a href='../index.jsp'>返回首页</a>");
             } else {
                 out.println("打卡失败，请重新打卡！</br>");
-                out.println("正在跳转至首页");
-                response.setHeader("Refresh","2;URL=../index.jsp");
+                out.println("正在跳转至打卡页面");
+                response.setHeader("Refresh","2;URL=/html/daka.html");
              //   out.println("<a href='/html/login.html'>重新登陆</a>");
             }
         }

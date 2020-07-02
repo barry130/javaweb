@@ -118,9 +118,9 @@ public class BaseDao {
         return result;
     }
 
-    public static boolean insert(String name,String time,int num,String content) {
-        String sql = "insert into daka(username,dakatime,num,remark) VALUE('" + name + "','" + time + "','" + num + "','" + content + "')";
-        //    System.err.println(sql);
+    public static boolean insert(String name,String time,String studytime,String content,int num,String remark) {
+        String sql = "insert into daka(username,dakatime,studytime,studycontent,num,remark) VALUE('" + name + "','" + time + "','" + studytime + "','" + content + "','" + num + "','" + remark + "')";
+           System.err.println(sql);
         boolean result = executeUpdate(sql);
         if (result) {
             System.err.println("打卡成功");
