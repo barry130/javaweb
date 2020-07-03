@@ -11,10 +11,11 @@
 
     if (session.getAttribute("name") != null) {
       String username =(String)session.getAttribute("name");
-      out.println("当前登录用户："+username);
+      out.println("当前登录用户："+username+"</br>");
       out.println("<a href='/html/daka.html'>前往打卡</a>");
       out.println("<a href='/jsp/record.jsp'>查询打卡记录</a>");
       out.println("<a href='/html/rank.html'>排行榜</a>");
+      out.println("<a href='/html/updatePass.html'>修改密码</a>");
       out.println("<a href='/jsp/logout.jsp'>注销</a>");
     } else {
       out.println("<a href='/html/login.html'>请登录</a>");

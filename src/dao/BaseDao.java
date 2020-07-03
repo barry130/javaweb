@@ -48,7 +48,7 @@ public class BaseDao {
     }
 
     public static boolean updatePassword(String name, String pass1, String pass2) {
-        if (!login(name, MD5(pass1))) {
+        if (!login(name, pass1)) {
             System.err.println("初始密码错误");
             return false;
         }
