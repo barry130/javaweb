@@ -20,7 +20,7 @@ public class BaseDao {
 
     }
 
-    public static String MD5(String password) {
+    private static String MD5(String password) {
 
         try {
             // 得到一个信息摘要器
@@ -118,12 +118,24 @@ public class BaseDao {
         return result;
     }
 
-    public static boolean insert(String name,String time,String studytime,String content,int num,String remark) {
-        String sql = "insert into daka(username,dakatime,studytime,studycontent,num,remark) VALUE('" + name + "','" + time + "','" + studytime + "','" + content + "','" + num + "','" + remark + "')";
+    public static boolean insert(String name,String time,String studytime,String content,String remark) {
+        String sql = "insert into daka(username,dakatime,studytime,studycontent,remark) VALUE('" + name + "','" + time + "','" + studytime + "','" + content + "','" + remark + "')";
            System.err.println(sql);
         boolean result = executeUpdate(sql);
         if (result) {
             System.err.println("打卡成功");
+        } else {
+            System.err.println("打卡失败");
+        }
+        return result;
+    }
+
+    public static boolean insert_num(String name,int num) {
+        String sql = "update user set num='"+num+"'where username='"+name+"'";
+        System.err.println(sql);
+        boolean result = executeUpdate(sql);
+        if (result) {
+            System.err.println("连续打卡成功");
         } else {
             System.err.println("打卡失败");
         }

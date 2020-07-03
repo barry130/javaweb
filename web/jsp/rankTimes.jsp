@@ -9,7 +9,7 @@
 <%@ page import="java.sql.*" %>
 <html>
 <head>
-    <title>累计打卡次数表</title>
+    <title>累计打卡次数排行榜</title>
 </head>
 <body>
 <%

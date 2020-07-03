@@ -11,7 +11,7 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <html>
 <head>
-    <title>每日打卡时间表</title>
+    <title>每日打卡时间排行榜</title>
 </head>
 <body>
 <%
@@ -50,7 +50,6 @@
             int rowCount = 0;
             out.println(df.format(new Date())+"  打卡记录：");
             out.println("<br/>");
-
             while (rs.next()) {
                 rowCount++;%>
         <tr>

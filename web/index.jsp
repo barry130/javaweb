@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="dao.BaseDao" %>
 <html>
 <head>
   <title>考研打卡系统</title>
@@ -7,10 +8,13 @@
 <div id="showTimes" align="center"></div>
 <div align="center">
   <%
+
     if (session.getAttribute("name") != null) {
       String username =(String)session.getAttribute("name");
       out.println("当前登录用户："+username);
       out.println("<a href='/html/daka.html'>前往打卡</a>");
+      out.println("<a href='/jsp/record.jsp'>查询打卡记录</a>");
+      out.println("<a href='/html/rank.html'>排行榜</a>");
       out.println("<a href='/jsp/logout.jsp'>注销</a>");
     } else {
       out.println("<a href='/html/login.html'>请登录</a>");
