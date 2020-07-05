@@ -33,6 +33,7 @@
 <div>
     当前登录用户<%=session.getAttribute("name")%>;
 <%
+    request.setCharacterEncoding("utf-8");
     String studytime = request.getParameter("studytime");
     String content = request.getParameter("content");
     String remark = request.getParameter("remark");
