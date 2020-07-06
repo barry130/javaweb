@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 
 public class BaseDao {
-    final static String url = "jdbc:mysql://101.200.56.162:3306/javaweb?user=canace&password=123456";
+    final static String url = "jdbc:mysql://101.200.56.162:3306/javaweb?user=canace&password=123456&useUnicode=true&characterEncoding=utf8";
     static Connection con = null;
     static Statement stmt = null;
 
@@ -129,6 +129,20 @@ public class BaseDao {
         }
         return result;
     }
+
+
+    public static boolean insert_schedule(String name,String time,String starttime,String endtime,String studycontent) {
+        String sql = "insert into schedule(username,inserttime,starttime,endtime,studycontent) VALUE('" + name + "','" + time + "','" + starttime + "','" + endtime + "','" + studycontent + "')";
+        System.err.println(sql);
+        boolean result = executeUpdate(sql);
+        if (result) {
+            System.err.println("计划表插入成功！");
+        } else {
+            System.err.println("计划表插入失败！");
+        }
+        return result;
+    }
+
 
     public static boolean insert_num(String name,int num) {
         String sql = "update user set num='"+num+"'where username='"+name+"'";
