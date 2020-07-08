@@ -9,9 +9,9 @@
     <h2>添加用户计划表页面</h2>
     <h5>备注：本页面暂时只支持添加本月的计划表，请与每月月初重新添加当月计划表</h5>
     <form action="/jsp/schedule.jsp" method="post">
-        <p>请输入开始时间：<input type="text" name="time1"></p>
-        <p>请输入结束时间：<input type="text" name="time2"></p>
-        <p>请输入学习安排：<input type="text" name="content"></p>
+        <p>请输入开始时间：<input type="text"  placeholder="如7:00" name="time1"></p>
+        <p>请输入结束时间：<input type="text"  placeholder="如7:30" name="time2"></p>
+        <p>请输入学习安排：<input type="text"  placeholder="如起床+早饭" name="content"></p>
         <p><input type="submit" value="提交" name="gotomysql">
             <input type="reset" value="重置" name="reset">
         </p>
