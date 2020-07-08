@@ -7,24 +7,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.sql.*" %>
+<%@ page import="dao.BaseDao" %>
 <html>
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title >本月学习计划表</title>
 </head>
 <body>
-<%
-    try {
-        Class.forName("com.mysql.jdbc.Driver");  ////驱动程序名
-        String url = "jdbc:mysql://101.200.56.162:3306/javaweb"; //数据库名
-        String username = "canace";  //数据库用户名
-        String password = "123456";  //数据库用户密码
-        Connection conn = DriverManager.getConnection(url, username, password);  //连接状态
-
-        if(conn != null){
-            //  out.print("数据库连接成功！");
-            out.print("<br />");
-%>
 <div style="text-align: center;">
     <table border="2" style="margin: auto">
         <tr>
@@ -35,12 +24,11 @@
         </tr>
 
         <%
-            Statement stmt = null;
             ResultSet rs = null;
             String name =(String)session.getAttribute("name");
             String sql = "select * from schedule WHERE username='"+name+"' and inserttime BETWEEN date_add(curdate(),interval -day(curdate())+1 day) and last_day(curdate())";
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(sql);
+            try{
+                rs= BaseDao.implement(sql);
             out.println("你的本月学习计划表：");
             while (rs.next()) {%>
         <tr>
@@ -51,9 +39,6 @@
         </tr>
         <%
                     }
-                }else{
-                    out.println("连接失败！");
-                }
             }catch (Exception e) {
                 //e.printStackTrace();
                 out.println("数据库连接异常！");

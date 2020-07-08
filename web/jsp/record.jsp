@@ -7,24 +7,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.sql.*" %>
+<%@ page import="dao.BaseDao" %>
 <html>
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title >打卡记录查询</title>
 </head>
 <body>
-<%
-    try {
-        Class.forName("com.mysql.jdbc.Driver");  ////驱动程序名
-        String url = "jdbc:mysql://101.200.56.162:3306/javaweb"; //数据库名
-        String username = "canace";  //数据库用户名
-        String password = "123456";  //数据库用户密码
-        Connection conn = DriverManager.getConnection(url, username, password);  //连接状态
-
-        if(conn != null){
-          //  out.print("数据库连接成功！");
-            out.print("<br />");
-%>
 <div style="text-align: center;">
 <table border="2" style="margin: auto">
     <tr>
@@ -37,12 +26,11 @@
     </tr>
 
 <%
-        Statement stmt = null;
         ResultSet rs = null;
         String username1 =(String)session.getAttribute("name");
         String sql = "select * from daka where username='" + username1 + "' order by id desc";
-        stmt = conn.createStatement();
-        rs = stmt.executeQuery(sql);
+        try {
+            rs= BaseDao.implement(sql);
         int rowCount = 0;
         out.println("打卡记录查询结果：");
         out.println("<br/>");
@@ -58,11 +46,8 @@
         <td width="100" ><%=rs.getString("remark") %></td>
     </tr>
     <%
-                }
-                out.println("你共打卡"+rowCount+"次");
-            }else{
-                out.println("连接失败！");
             }
+            out.println("你共打卡"+rowCount+"次");
         }catch (Exception e) {
             //e.printStackTrace();
             out.println("数据库连接异常！");

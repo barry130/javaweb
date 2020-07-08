@@ -7,24 +7,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.sql.*" %>
+<%@ page import="dao.BaseDao" %>
 <html>
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>连续打卡次数排行榜</title>
 </head>
 <body>
-<%
-    try {
-        Class.forName("com.mysql.jdbc.Driver");  ////驱动程序名
-        String url = "jdbc:mysql://101.200.56.162:3306/javaweb"; //数据库名
-        String username = "canace";  //数据库用户名
-        String password = "123456";  //数据库用户密码
-        Connection conn = DriverManager.getConnection(url, username, password);  //连接状态
-
-        if(conn != null){
-            //  out.print("数据库连接成功！");
-            out.print("<br />");
-%>
 <div style="text-align: center;">
     <table border="2" style="margin: auto">
         <tr>
@@ -34,11 +23,10 @@
         </tr>
 
         <%
-            Statement stmt = null;
             ResultSet rs = null;
             String sql = "SELECT username,num from user ORDER BY num desc";
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(sql);
+            try{
+                rs= BaseDao.implement(sql);
             int rowCount = 0;
             out.println("连续打卡次数排行榜：");
             out.println("<br/>");
@@ -51,9 +39,6 @@
             <td width="100" ><%=rs.getString("num") %></td>
         </tr>
         <%
-                    }
-                }else{
-                    out.println("连接失败！");
                 }
             }catch (Exception e) {
                 //e.printStackTrace();

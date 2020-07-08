@@ -19,6 +19,10 @@ public class BaseDao {
         }
 
     }
+    public static ResultSet implement(String sql) throws SQLException {
+        stmt = con.createStatement();
+        return stmt.executeQuery(sql);
+    }
 
     private static String MD5(String password) {
 

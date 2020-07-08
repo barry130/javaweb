@@ -9,28 +9,13 @@
 <%@ page import="dao.BaseDao" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.sql.DriverManager" %>
-<%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.Statement" %>
 <html>
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>用户打卡系统</title>
 </head>
 <body>
-<%
-    try {
-        Class.forName("com.mysql.jdbc.Driver");  ////驱动程序名
-        String url = "jdbc:mysql://101.200.56.162:3306/javaweb"; //数据库名
-        String username = "canace";  //数据库用户名
-        String password = "123456";  //数据库用户密码
-        Connection conn = DriverManager.getConnection(url, username, password);  //连接状态
-
-        if(conn != null){
-            //  out.print("数据库连接成功！");
-            out.print("<br />");
-%>
 <div>
     当前登录用户<%=session.getAttribute("name")%>;
 <%
@@ -39,7 +24,6 @@
     String content = request.getParameter("content");
     String remark = request.getParameter("remark");
     String username1 =(String)session.getAttribute("name");
-    Statement stmt = null;
     ResultSet rs = null;
     String sql = "SELECT count(*) FROM ( SELECT date_sub(a.dakatime, INTERVAL 1 DAY) signDate, " +
             "( @i := DATE_ADD(@i, INTERVAL - 1 DAY) ) today " +
@@ -47,8 +31,8 @@
             "INNER JOIN ( SELECT @i := max(dakatime) AS signMax FROM daka where username='"+username1+"' AND " +
             "( TO_DAYS(dakatime) = TO_DAYS(curdate()) OR TO_DAYS(dakatime) = TO_DAYS( DATE_ADD(curdate(), INTERVAL - 1 DAY) ) )" +
             " ) b ON b.signMax IS NOT NULL AND TO_DAYS(DATE_ADD(@i, INTERVAL - 1 DAY)) = TO_DAYS( date_sub(a.dakatime, INTERVAL 1 DAY) ) ) c";
-    stmt = conn.createStatement();
-    rs = stmt.executeQuery(sql);
+    try {
+        rs=BaseDao.implement(sql);
     int num=0;
     while(rs.next()){
          num=rs.getInt("count(*)")+1;
@@ -84,9 +68,6 @@
 %>
 </div>
 <%
-    }else{
-    out.println("连接失败！");
-    }
     }catch (Exception e) {
     //e.printStackTrace();
     out.println("数据库连接异常！");
