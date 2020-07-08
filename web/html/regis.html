@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>用户注册页面</title>
 </head>
 <body >
 <h2 align="center">用户注册页面</h2>
 <form action="/jsp/regis.jsp" method="post">
     <div align="center">
-        <p>请输入用户名：<input type="text" name="username"></p>
-        <p>请输入密码：<input type="text" name="password1"></p>
-        <p>请再次输入密码：<input type="text" name="password2"></p>
+        <p>请输入用户名：<input type="text" placeholder="请输入英文或数字" name="username"></p>
+        <p>请输入密码：<input type="password" placeholder="长度建议不少于6位数" name="password1"></p>
+        <p>请再次输入密码：<input type="password"  placeholder="长度建议不少于6位数" name="password2"></p>
         <p><input type="submit" value="注册" name="regis">
             <input type="reset" value="重置" name="reset">
         </p>

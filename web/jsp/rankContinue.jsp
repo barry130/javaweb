@@ -9,6 +9,7 @@
 <%@ page import="java.sql.*" %>
 <html>
 <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>连续打卡次数排行榜</title>
 </head>
 <body>
@@ -35,11 +36,11 @@
         <%
             Statement stmt = null;
             ResultSet rs = null;
-            String sql = "SELECT username,num from user ORDER BY num DESC ";
+            String sql = "SELECT username,num from user ORDER BY num desc";
             stmt = conn.createStatement();
             rs = stmt.executeQuery(sql);
             int rowCount = 0;
-            out.println("连续打卡次数次数排行榜：");
+            out.println("连续打卡次数排行榜：");
             out.println("<br/>");
 
             while (rs.next()) {
