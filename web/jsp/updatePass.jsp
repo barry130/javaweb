@@ -18,7 +18,7 @@
     String pass1 = request.getParameter("password1");
     String pass2 = request.getParameter("password2");
     String pass3 = request.getParameter("password3");
-    if (pass2.equals(pass3)) {
+    if (!pass2.equals(pass3)) {
         out.println("两次密码不一致，请重新修改！正在跳转至密码修改页");
         response.setHeader("Refresh", "2;URL=/html/updatePass.html");
     } else {
