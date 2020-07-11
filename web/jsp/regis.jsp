@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="dao.BaseDao" %>
+<%@ page import="java.util.Objects" %>
 <html>
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
@@ -18,12 +19,12 @@
     String name = request.getParameter("username");
     String pass1 = request.getParameter("password1");
     String pass2 = request.getParameter("password2");
-    if(name==""||pass1==""||pass2==""){
+    if(Objects.equals(name, "") || Objects.equals(pass1, "") || Objects.equals(pass2, "")){
         out.println("用户名或密码为空，请重新注册！正在跳转至注册页");
         response.setHeader("Refresh", "2;URL=/html/regis.html");
     }
     else {
-        if (!pass1.equals(pass2)) {
+        if (!pass2.equals(pass1)) {
             out.println("两次密码不一致，请重新注册！正在跳转至注册页");
             response.setHeader("Refresh", "2;URL=/html/regis.html");
         } else {
