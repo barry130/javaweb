@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="dao.BaseDao" %>
+<%@ page import="java.util.Objects" %>
 
 <html>
 <head>
@@ -19,18 +20,23 @@
     request.setCharacterEncoding("utf-8");
     String username = request.getParameter("username");
     String password = request.getParameter("password");
-    if (BaseDao.login(username, password)) {
-        session.setAttribute("name", username);
-        out.println("登陆成功!3秒后跳转至首页</br>");
-        out.println("<a href='../index.jsp'>不自动跳转？点此跳转</a>");
-        response.setHeader("Refresh","2;URL=../index.jsp");
-      //  out.println("<a href='/html/daka.html'>前往打卡</a>");
-      //  out.println("<a href='../index.jsp'>返回首页</a>");
-    } else {
-        out.println("用户名或密码错误，登陆失败，请重新登录！</br>");
-        out.println("正在跳转至登录页");
-        response.setHeader("Refresh","2;URL=/html/login.html");
-       // out.println("<a href='/html/login.html'>重新登陆</a>");
+    if(Objects.equals(username, "") || Objects.equals(password, "")){
+        out.println("用户名或密码为空，请重新登录！正在跳转至登录页");
+        response.setHeader("Refresh", "2;URL=/html/login.html");
+    }else {
+        if (BaseDao.login(username, password)) {
+            session.setAttribute("name", username);
+            out.println("登陆成功!3秒后跳转至首页</br>");
+            out.println("<a href='../index.jsp'>不自动跳转？点此跳转</a>");
+            response.setHeader("Refresh", "2;URL=../index.jsp");
+            //  out.println("<a href='/html/daka.html'>前往打卡</a>");
+            //  out.println("<a href='../index.jsp'>返回首页</a>");
+        } else {
+            out.println("用户名或密码错误，登陆失败，请重新登录！</br>");
+            out.println("正在跳转至登录页");
+            response.setHeader("Refresh", "2;URL=/html/login.html");
+            // out.println("<a href='/html/login.html'>重新登陆</a>");
+        }
     }
 %>
 </body>

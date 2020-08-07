@@ -3,19 +3,43 @@
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>用户登录页面</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .panel {
+            padding: 10px 15px;
+            width: 600px;
+        }
+
+        body{
+            background:#e6ecf0;
+        }
+        nav{
+            background:#ffffff;
+        }
+    </style>
 </head>
 <body >
-<h2 align="center">用户登录页面</h2>
 <div align="center">
-<form action="/jsp/login.jsp" method="post">
-
-        <p>用户名：<input type="text" name="username"></p>
-        <p>密码：<input type="password" name="password"></p>
-        <p><input type="submit" value="登录" name="login">
-            <input type="reset" value="重置" name="reset">
-        </p>
-        <p>没有账号？<a href="regis.html" color=blue>注册用户</a></p>
-</form>
+    <div class="panel panel-default" align="left">
+        <div class="panel-body" >
+            <h2><strong>用户登录页面</strong></h2>
+            <br>
+            <form action="/jsp/login.jsp" method="post">
+            账号：<br>
+            <input type="text" class="form-control" placeholder="请输入用户名" name="username">
+            密码：<br>
+            <input type="password" class="form-control" placeholder="请输入密码" name="password">
+            <br>
+            <button type="submit" class="btn btn-primary">登录</button>&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">忘记密码</a>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <h4>没有账号？<a href="regis.html">马上注册 &gt&gt</a></h4>
+        </div>
+    </div>
 </div>
 </body>
 </html>

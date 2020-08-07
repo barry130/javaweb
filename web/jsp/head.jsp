@@ -28,21 +28,18 @@
     if(username==null){
 %>
 <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
-    <div>
         <div class="navbar-header zuo pull-right">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="../html/regis.html"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
                 <li><a href="../html/login.html"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
             </ul>
         </div>
-    </div>
 </nav>
 <%
     }
     else {
 %>
 <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
-    <div>
         <div class="navbar-header zuo pull-right">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
@@ -61,7 +58,6 @@
                 </li>
             </ul>
         </div>
-    </div>
 </nav>
 <%
     }

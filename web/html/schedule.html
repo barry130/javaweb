@@ -3,20 +3,45 @@
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>用户计划表</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .panel {
+            padding: 10px 15px;
+            width: 600px;
+        }
+
+        body{
+            background:#e6ecf0;
+        }
+        nav{
+            background:#ffffff;
+        }
+    </style>
 </head>
 <body>
 <div align="center">
-    <h2>添加用户计划表页面</h2>
-    <h5>备注：本页面暂时只支持添加本月的计划表，请与每月月初重新添加当月计划表</h5>
-    <form action="/jsp/schedule.jsp" method="post">
-        <p>请输入开始时间：<input type="text"  placeholder="如7:00" name="time1"></p>
-        <p>请输入结束时间：<input type="text"  placeholder="如7:30" name="time2"></p>
-        <p>请输入学习安排：<input type="text"  placeholder="如起床+早饭" name="content"></p>
-        <p><input type="submit" value="提交" name="gotomysql">
-            <input type="reset" value="重置" name="reset">
-        </p>
-        <p> <p><a href="/jsp/schedulecontent.jsp" color=blue>查询本月已经添加的计划表</a></p></p>
-    </form>
+    <div class="panel panel-default" align="left">
+        <div class="panel-body" >
+            <h2><strong>添加用户计划表页面</strong></h2>
+            <h5>备注：本页面暂时只支持添加本月的计划表，请与每月月初重新添加当月计划表</h5>
+            <br>
+            <form action="/jsp/schedule.jsp" method="post">
+                请输入开始时间：<br>
+                <input type="text" class="form-control" placeholder="如7:00" name="time1">
+                请输入结束时间：<br>
+                <input type="text" class="form-control" placeholder="如7:30" name="time2">
+                请输入学习安排：<br>
+                <input type="text" class="form-control" placeholder="如起床+早饭" name="content">
+                <br>
+                <button type="submit" class="btn btn-primary">提交</button>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <h4><a href="/jsp/schedulecontent.jsp">查询本月已经添加的计划表 &gt&gt</a></h4>
+        </div>
+    </div>
 </div>
 </body>
 </html>
