@@ -14,19 +14,23 @@
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>每日打卡时间排行榜</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div style="text-align: center;">
-    <table border="2" style="margin: auto">
+<div style="text-align: center;margin-left:150px;margin-right:150px;" class="table-responsive">
+    <table class="table table-striped text-nowrap">
+        <thead>
         <tr>
-            <td width="50" s="title">序号</td>
-            <td width="100" name="title">用户名</td>
-            <td width="200" time="title">打卡时间</td>
-            <td width="100" studytime="title">每日学习时间(小时)</td>
-            <td width="400" content="title">每日学习内容</td>
-            <td width="400" remark="title">备注</td>
+            <th>序号</th>
+            <th>用户名</th>
+            <th>打卡时间</th>
+            <th>每日学习时间(小时)</th>
+            <th>每日学习内容</th>
+            <th>备注</th>
         </tr>
-
+        </thead>
         <%
             ResultSet rs = null;
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -40,14 +44,16 @@
             out.println("<br/>");
             while (rs.next()) {
                 rowCount++;%>
+        <tbody>
         <tr>
-            <td width="100"  ><% out.print(rowCount);%></td>
-            <td width="100" ><%=rs.getString("username") %></td>
-            <td width="100" ><%=rs.getString("dakatime") %></td>
-            <td width="100" ><%=rs.getString("studytime") %></td>
-            <td width="100" ><%=rs.getString("studycontent") %></td>
-            <td width="100" ><%=rs.getString("remark") %></td>
+            <td><% out.print(rowCount);%></td>
+            <td><%=rs.getString("username") %></td>
+            <td><%=rs.getString("dakatime") %></td>
+            <td><%=rs.getString("studytime") %></td>
+            <td><%=rs.getString("studycontent") %></td>
+            <td><%=rs.getString("remark") %></td>
         </tr>
+        </tbody>
         <%
                     }
                     out.println("今日共打卡"+rowCount+"次");
@@ -56,7 +62,6 @@
                 out.println("数据库连接异常！");
             }
             out.println("<br/>");
-            out.println("<a href='/html/rank.html'>返回排行榜</a>"+"&nbsp;&nbsp;&nbsp;&nbsp;");
             out.println("<a href='../index.jsp'>返回首页</a>");
         %>
     </table>

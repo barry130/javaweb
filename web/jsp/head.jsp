@@ -18,7 +18,7 @@
         background:#ffffff;
     }
     .zuo{
-        margin-right:100px;
+        margin-right:60px;
     }
 
 </style>
@@ -50,7 +50,7 @@
                         <li><a href="../html/daka.html">今日打卡</a></li>
                         <li><a href="../html/updatePass.html">修改密码</a></li>
                         <li><a href="../jsp/record.jsp">打卡记录查询</a></li>
-                        <li><a href="../html/rank.html">排行榜</a></li>
+                        <li><a href="../jsp/rank.jsp">排行榜</a></li>
                         <li><a href="../html/schedule.html">添加本月学习计划表</a></li>
                         <li><a href="../jsp/schedulecontent.jsp">查看本月学习计划表</a></li>
                         <li><a href="../jsp/logout.jsp">注销</a></li>

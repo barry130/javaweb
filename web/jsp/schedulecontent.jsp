@@ -12,17 +12,21 @@
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title >本月学习计划表</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div style="text-align: center;">
-    <table border="2" style="margin: auto">
+<div style="text-align: center;margin-left:300px;margin-right:300px;" class="table-responsive">
+    <table class="table table-striped text-nowrap">
+        <thead>
         <tr>
-            <td width="100" name="title">用户名</td>
-            <td width="100" time1="title">开始时间</td>
-            <td width="100" time1="title">结束时间</td>
-            <td width="300" studycontent="title">学习内容</td>
+            <th>用户名</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            <th>学习内容</th>
         </tr>
-
+        </thead>
         <%
             ResultSet rs = null;
             String name =(String)session.getAttribute("name");
@@ -31,12 +35,14 @@
                 rs= BaseDao.implement(sql);
             out.println("你的本月学习计划表：");
             while (rs.next()) {%>
+        <tbody>
         <tr>
-            <td width="100" ><%=rs.getString("username") %></td>
-            <td width="100" ><%=rs.getString("starttime") %></td>
-            <td width="100" ><%=rs.getString("endtime") %></td>
-            <td width="100" ><%=rs.getString("studycontent") %></td>
+            <td><%=rs.getString("username") %></td>
+            <td><%=rs.getString("starttime") %></td>
+            <td><%=rs.getString("endtime") %></td>
+            <td><%=rs.getString("studycontent") %></td>
         </tr>
+        </tbody>
         <%
                     }
             }catch (Exception e) {
